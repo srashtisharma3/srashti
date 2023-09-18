@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel form</title>
+</head>
+<body>
+    <div>
+        <h1>Travel details form</h1>
+        <form action="form.php"></form>
+        <label for="name">Name: </label>
+        <input type="text" placeholder="Enter your name"> <br>
+        <label for="moblie_no">Mobile No: </label>
+        <input type="number" placeholder="Enter your number"> <br>
+        <label for="selectsection">Select section: </label>
+        <label for="sectiona"> 
+        <input type="radio" value="section" name="Section A" id="sectiona"> Section A</label>
+        <label for="sectionb">
+            <input type="radio" value="section" name="Section B" id="sactionb">Secton B
+        </label> <br>
+        <label for="selection">What do you have?</label> <br>
+        <input type="checkbox" name="canteencard" id="canteen">
+        <label for="canteen"> Have Canteen Card</label> <br>
+        <input type="checkbox" name="librarycard" id="library">
+        <label for="library">Have Library Card</label> <br>
+        <textarea name="explain" id="explain" cols="30" rows="5" placeholder="Explain purpose to join"></textarea> <br>
+        <label for="option">Choose car: </label>
+        <select name="car" id="car">
+            <option value="no_car">Select car</option>
+            <option value="omni">Omni</option>
+            <option value="dzire">Dzire</option>
+            <option value="bmw">BMW</option>
+            <option value="audi">Audi</option>
+        </select> <br>
+        <input type="submit"> <br> <br>
+        <label for="vid">Video for referance</label> <br>
+        <div>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/5nCUaTNUeEU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> <br>
+        <iframe src="https://www.bing.com" frameborder="0" width="900"></iframe> </div>
+
+
+    </div>
+</body>
+</html>
