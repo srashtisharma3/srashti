@@ -1,1 +1,1 @@
-// basic coding of js, html, php, sql 
+// basic coding programs of javascript, HTML, PHP, SQL, REACT JS, REST API with PHP
