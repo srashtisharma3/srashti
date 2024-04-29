@@ -20,7 +20,7 @@ VALUES
 
 
 
-<?php
+    <?php
 
 $servername = "localhost";
 $username = "root";
@@ -28,35 +28,44 @@ $password = "";
 $dbname = "test";
 
 $con = mysqli_connect($servername, $username, $password, $dbname);
-if(!$con){
-    die ("Connection failed!");
+if (!$con) {
+    die("Connection failed: " . mysqli_connect_error());
 }
 echo "Connection successful!";
 echo "<br><br>";
 
-
-function getAllCategory($con) {
+function getAllCategory($con)
+{
     $categories = array();
 
     $sql = "SELECT * FROM `tbl_categories` WHERE parent_catid = 0";
-    
+
     $result = mysqli_query($con, $sql);
 
-    if ($result && mysqli_num_rows($result) > 0) {
+    if (mysqli_num_rows($result) > 0) {
+        
         while ($row = mysqli_fetch_assoc($result)) {
+
             $cat_id = $row['id'];
+
+            $parent_name = $row['cat_name'];
+            echo $parent_name;
+
+            $categories[$parent_name] = array();
+
 
             $sql1 = "SELECT * FROM `tbl_categories` WHERE parent_catid = $cat_id and parent_catid != '' ";
             $result1 = mysqli_query($con, $sql1);
 
-            // echo $sql1 ;
+            if (mysqli_num_rows($result1) > 0) {
 
-            if ($result1 && mysqli_num_rows($result1) > 0) {
                 while ($row1 = mysqli_fetch_assoc($result1)) {
-                    $categories[$cat_id][] = $row1['cat_name'];
+
+                    $categories[$parent_name][] = $row1['cat_name'];
 
                     // print_r($categories);
                     // die();
+                   
                 }
             }
         }
@@ -67,16 +76,35 @@ function getAllCategory($con) {
 
 $categories = getAllCategory($con);
 
-// print_r($categories) ;
 
-$cat = json_encode($categories, true);
-echo $cat;
+foreach ($categories as $parentCat => $childCats) {
+    echo "<b>$parentCat</b>: ";
+
+    echo "<ul>";
+
+    foreach ($childCats as $childCat) {
+        echo "<li>$childCat</li>";
+    }
+
+    echo "</ul>";
+}
 
 
-// output ===>>> {"1":["shirts","pants","saree"],"5":["junk","healthy"],"8":["mobile","laptop"]}
+// output >>>
 
+    // clothes:
+        // shirts
+        // pants
+        // saree
+    // food:
+        // junk
+        // healthy
+    // electronics:
+        // mobile
+        // laptop
 
 
 mysqli_close($con);
 ?>
+
 
