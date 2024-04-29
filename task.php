@@ -49,13 +49,13 @@ function getAllCategory($con) {
             $sql1 = "SELECT * FROM `tbl_categories` WHERE parent_catid = $cat_id and parent_catid != '' ";
             $result1 = mysqli_query($con, $sql1);
 
-            echo $sql1 ;
+            // echo $sql1 ;
 
             if ($result1 && mysqli_num_rows($result1) > 0) {
                 while ($row1 = mysqli_fetch_assoc($result1)) {
                     $categories[$cat_id][] = $row1['cat_name'];
 
-                    print_r($categories);
+                    // print_r($categories);
                     // die();
                 }
             }
